@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  padding: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 300px 300px 300px;
+  grid-template-areas:
+    "fog   food  apt"
+    "fog   door  apt"
+    "living door  hill";
+  gap: 15px;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s;
+}
+
+.grid-item:hover img {
+  transform: scale(1.05);
+}
+
+.grid-item .caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.grid-item:hover .caption {
+  opacity: 1;
+}
+
+.item-fog {
+  grid-area: fog;
+}
+
+.item-food {
+  grid-area: food;
+}
+
+.item-apt {
+  grid-area: apt;
+}
+
+.item-door {
+  grid-area: door;
+}
+
+.item-living {
+  grid-area: living;
+}
+
+.item-hill {
+  grid-area: hill;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 300px);
+    grid-template-areas:
+      "fog  food"
+      "apt  door"
+      "living hill"
+      "blank blank";
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 250px);
+    grid-template-areas:
+      "fog"
+      "food"
+      "apt"
+      "door"
+      "living"
+      "hill";
+  }
+}
